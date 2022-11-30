@@ -22,12 +22,15 @@ int[,] SelectionSort(int[,] massiv)
     {
         for (int j = 0; j < massiv.GetLength(1); j++)
         {
-            for (int k = massiv.GetLength(1) -1; k >j; k--)
-            if(massiv[i,k] > massiv[i, k-1])
+            for (int k = 0; k < massiv.GetLength(1) -1; k++)
             {
-                int temporary = massiv[i,k];
-                massiv[i,k] = massiv[i, k -1];
-                massiv[i, k -1] = temporary;
+                if(massiv[i,k] < massiv[i, k+1])
+                {
+                    int temporary = massiv[i,k+1];
+                    massiv[i,k+1] = massiv[i, k];
+                    massiv[i, k] = temporary;
+                }
+                
             }
         }
     }
